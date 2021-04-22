@@ -1,0 +1,48 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id("com.github.node-gradle.node") version "2.2.0"
+}
+
+group = 'com.4etell'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+task buildFront(type: YarnTask) {
+	args = ['build']
+}
+
+yarn_install.dependsOn(yarn_cache_clean)
+buildFront.dependsOn(yarn_install)
+processResources.dependsOn(buildFront)
+
+repositories {
+	mavenCentral()
+}
+
+node {
+	download = true
+	version = "12.13.1"
+	npmVersion = "6.9.0"
+	yarnVersion = "1.17.3"
+	nodeModulesDir = project.file("ui")
+	workDir = project.file("${project.buildDir}/nodejs")
+	npmWorkDir = project.file("${project.buildDir}/npm")
+	yarnWorkDir = project.file("${project.buildDir}/yarn")
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-devtools'
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.postgresql:postgresql'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+	useJUnitPlatform()
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <title>ToxicTalks</title>
+    <script th:inline="javascript">
+        let profile = [[${profile}]]
+        let usernamesList = [[${usernamesList}]]
+        let userChats = [[${userChats}]]
+        let userTopics = [[${userTopics}]]
+        let allTopics = [[${allTopics}]]
+    </script>
+</head>
+<body>
+<div id="app"></div>
+
+<script th:src="${isDevMode} ? 'http://localhost:8000/main.js' : '/js/main.js'"></script>
+</body>
+</html>
