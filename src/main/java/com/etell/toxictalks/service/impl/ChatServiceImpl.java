@@ -15,7 +15,6 @@ import com.etell.toxictalks.dto.ws.WsObjectType;
 import com.etell.toxictalks.projections.ChatMessageProjection;
 import com.etell.toxictalks.projections.ChatProjection;
 import com.etell.toxictalks.projections.repo.ChatMessageProjectionRepo;
-import com.etell.toxictalks.projections.repo.ChatProjectionRepo;
 import com.etell.toxictalks.repo.ChatMessageRepo;
 import com.etell.toxictalks.repo.ChatRepo;
 import com.etell.toxictalks.service.ChatService;
@@ -303,7 +302,7 @@ public class ChatServiceImpl implements ChatService {
         return chatRepo.
                 findAllTopics(userId)
                 .stream()
-                .map(this::<ChatProjectionRepo>convertToTopicDtoRes)
+                .map(this::convertToTopicDtoRes)
                 .collect(Collectors.toList());
     }
 
@@ -312,7 +311,7 @@ public class ChatServiceImpl implements ChatService {
         return chatRepo.
                 findUserTopics(userId)
                 .stream()
-                .map(this::<ChatProjectionRepo>convertToTopicDtoRes)
+                .map(this::convertToTopicDtoRes)
                 .collect(Collectors.toList());
     }
 
@@ -321,12 +320,12 @@ public class ChatServiceImpl implements ChatService {
         return chatRepo
                 .findUserChats(userId)
                 .stream()
-                .map(this::<ChatProjectionRepo>convertToUserChatDtoRes)
+                .map(this::convertToUserChatDtoRes)
                 .collect(Collectors.toList());
     }
 
 
-    private <T extends ChatProjection> UserChatDtoRes convertToUserChatDtoRes(T chat) {
+    private UserChatDtoRes convertToUserChatDtoRes(ChatProjection chat) {
 
         UserChatDtoRes userChatDtoRes = new UserChatDtoRes();
 
@@ -341,14 +340,14 @@ public class ChatServiceImpl implements ChatService {
         if (messagesFromDb != null) {
             userChatDtoRes.setMessages(messagesFromDb
                     .stream()
-                    .map(this::<ChatMessageProjectionRepo>convertToChatMessageDtoRes)
+                    .map(this::convertToChatMessageDtoRes)
                     .collect(Collectors.toList()));
         }
 
         return userChatDtoRes;
     }
 
-    private <T extends ChatMessageProjection> ChatMessageDtoRes convertToChatMessageDtoRes(T message) {
+    private ChatMessageDtoRes convertToChatMessageDtoRes(ChatMessageProjection message) {
 
         ChatMessageDtoRes chatMessageDtoRes = new ChatMessageDtoRes();
 
@@ -362,7 +361,7 @@ public class ChatServiceImpl implements ChatService {
         return chatMessageDtoRes;
     }
 
-    private <T extends ChatProjection> TopicDtoRes convertToTopicDtoRes(T chat) {
+    private TopicDtoRes convertToTopicDtoRes(ChatProjection chat) {
 
         TopicDtoRes topicDtoRes = new TopicDtoRes();
 
