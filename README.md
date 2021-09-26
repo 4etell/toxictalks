@@ -8,10 +8,10 @@
 Так как приложение загружено на бесплатную платформу heroku, приложение может "спать", поэтому первый запрос будет долгим.
 <br>
 <h4>Страница регистрации:</h4>
-<img src="docs/login-page.png">
+<img src="docs/registration-page.png">
 <h4>Страница авторизации:</h4>
-![](docs/login-page.png "Страница авторизации")
+<img src="docs/login-page.png">
 <h4>Страница тем:</h4>
-![](docs/topic-page.png "Страница тем")
+<img src="docs/topic-page.png">
 <h4>Страница чатов:</h4>
-![](docs/chat-page.png "Страница чатов")
+<img src="docs/chat-page.png">
