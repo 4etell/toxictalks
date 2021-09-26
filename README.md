@@ -1,7 +1,7 @@
 # TOXICTALKS
 Приложение для споров на любые темы.
 <br>
-Стек технологий: Spring Boot, PostgreSql, VueJs.
+<b>Стек технологий:</b> Spring Boot, PostgreSql, VueJs.
 <br>
 Поработать с приложением можно здесь: https://toxictalks.herokuapp.com/ 
 <br>
